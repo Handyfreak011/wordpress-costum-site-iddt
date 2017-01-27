@@ -33,10 +33,38 @@ function iddt_register_site_post_type(){
   );
 
   $args = array(
+    'labels' => $labels,
+    'description' => 'Eine Seite für die Produktarten',
     'public' => true,
-    'labels' => $labels
+    'exclude_from_search' => false,
+    'publicly_queryable' => true,
+    'show_ui' => true,
+    'show_in_nav_menus' => true,
+    'show_in_menu' => true,
+    'show_in_admin_bar' => true,
+    'menu_position' => 13,
+    'menu_icon' => 'dashicons-layout',
+    'capability_type' => 'page',
+    'map_meta_cap' => true,
+    'hierarchical' => true,
+    'supports' => array(
+      'title',
+      'editor',
+      'author',
+      'thumbnail',
+      'costum-fields',
+      'comments',
+      'revisions'
+    ),
+    'rewrite'             => array(
+      'slug' => $slug,
+      'with_front' => true,
+      'pages' => true,
+      'feeds' => true,
+    ),
+    'can_export' => true,
   );
-  register_post_type('Bessere Seite', $args);
+  register_post_type('Produktart', $args);
 }
 
 add_action('init', 'iddt_register_site_post_type');
